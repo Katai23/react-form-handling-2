@@ -1,6 +1,18 @@
+import {useState} from "react";
+
 function ProductForm() {
+  const [productName, setProductName] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`
+      Product Name: ${productName}
+      Image URL=${imageUrl}
+      Price: ${price}
+      Description: ${description}`
+    );
+  };
   return (
-    <form className="post-form">
+    <form className="post-form" onSubmit={handleSubmit}>
       <h1>Create Product Form</h1>
       <div className="input-container">
         <label>
@@ -10,7 +22,8 @@ function ProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={() => {}}
+            value={productName}
+            onChange={(e) =>setProductName(e.target.value)}
           />
         </label>
       </div>
@@ -22,7 +35,8 @@ function ProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={() => {}}
+            value={imageUrl}
+            onChange={(e) =>setImageUrl(e.target.value)}
           />
         </label>
       </div>
@@ -34,7 +48,8 @@ function ProductForm() {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={() => {}}
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </label>
       </div>
@@ -46,7 +61,8 @@ function ProductForm() {
             name="description"
             type="text"
             placeholder="Enter description here"
-            onChange={() => {}}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             rows={4}
             cols={30}
           />
